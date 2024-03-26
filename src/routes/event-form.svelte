@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form'
 	import { Input } from '$lib/components/ui/input'
-	import { eventSchema, type EventSchema } from '../models/event'
+	import { eventSchema, type EventSchema } from '$lib/models/event'
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms'
 	import { zodClient } from 'sveltekit-superforms/adapters'
 	import { dateProxy } from 'sveltekit-superforms'
@@ -17,9 +17,15 @@
 		validators: zodClient(eventSchema),
 	})
 
-	const { form: formData, enhance } = form
+	const { form: formData, enhance, constraints } = form
 	const startDateProxy = dateProxy(form, 'startDate', { format: 'date' })
 	const endDateProxy = dateProxy(form, 'endDate', { format: 'date' })
+
+	let minDate: string
+
+	$: if (typeof $constraints.startDate?.min === 'string') {
+		minDate = new Date($constraints.startDate?.min).toLocaleDateString('sv-SE') //  yyyy-mm-dd format
+	}
 
 	let includeTime = false
 	let className: HTMLFormAttributes['class'] = undefined
@@ -37,7 +43,7 @@
 	<Form.Field {form} name="startDate">
 		<Form.Control let:attrs>
 			<Form.Label class="text-lg">Start Date</Form.Label>
-			<Input type="date" {...attrs} bind:value={$startDateProxy} />
+			<Input type="date" {...attrs} bind:value={$startDateProxy} min={minDate} />
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>

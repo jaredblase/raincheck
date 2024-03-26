@@ -1,7 +1,5 @@
 {
-	"cSpell.words": [
-		"raincheck"
-	],
+	"cSpell.words": ["raincheck", "TURSO"],
 	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
