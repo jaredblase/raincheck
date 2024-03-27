@@ -6,7 +6,7 @@
 	<title>Raincheck | Home</title>
 </svelte:head>
 
-<header class="container flex h-16 items-center">
+<header class="container flex h-20 items-center">
 	<p class="text-3xl font-medium text-primary">raincheck</p>
 	<img src="/logo/icon.svg" alt="blue umbrella logo" class="ml-2 w-7" />
 </header>

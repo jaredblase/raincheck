@@ -61,7 +61,7 @@ const config = {
 			keyframes: {
 				'side-to-side': {
 					'0%': { transform: 'translateX(0)' },
-					'100%': { transform: 'translateX(6%)' },
+					'100%': { transform: 'translateX(10%)' },
 				},
 				diagonal: {
 					'0%': { transform: 'translate(0, 0)' },
